@@ -53,7 +53,7 @@ export interface IPayload {
   processMission?: { percents?: number, dropList: string[], numProcess?: number, dropNumber?: number };
   timestamp?: string
   showInfo: boolean
-  windowData?:number
+  windowData?: number
 }
 
 interface IMission {
@@ -316,7 +316,7 @@ const Home = () => {
       <div className="robot-info-panel">
         {agvAll.map(agv => <div key={agv.name} className="tracker-card">
           <div className="plane-image">
-            <div className={`header-home-robots ${agv.connected ? "":"bg-gray"}`}>
+            <div className={`header-home-robots ${agv.connected ? "" : "bg-gray"}`}>
               <div className="flight-info" >
                 <div className="robot-name">{agv.name}</div>
                 {agv.connected ? <div className="airline">
@@ -347,7 +347,7 @@ const Home = () => {
           </div>
           <div className="info-panel" style={{ height: agv.showInfo == true ? '454px' : '0px', overflow: 'hidden' }}>
             <div className="route-section">
-              {(agv.mission_id&&agv.connected) ? <div>
+              {(agv.mission_id && agv.connected) ? <div>
                 <div className="robot-station-route">
                   <div className="station">
                     <div className="station-code">P05</div>
@@ -449,6 +449,9 @@ const Home = () => {
         </div>)}
       </div>
       <MapCommand funcClick={() => onclickCommand("", false)} data={showDialog} />
+      {!loadSuccess && <div className={`loading-background`}>
+        <div id="loading"></div>
+      </div>}
       {onlineBar !== null && <StatusOnline online={onlineBar}></StatusOnline>}
       {batteryLow && <div className='battery-low-alert'>
         <div className='w-100 p-4 text-center h5'><BiError size={32} color={'red'} /><span className='ps-2'>{batteryLow?.name} {t('batteryLow')}</span>

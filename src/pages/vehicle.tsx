@@ -3,14 +3,13 @@ import '../pages/css/vehicle.css';
 import { useTranslation } from 'react-i18next';
 import StatusOnline from './option/statusOnline';
 import NotAuthenticated from './option/notAuthenticated';
-import type { IVehicles, IPayload } from './home';
+import type { IPayload } from './home';
 import axiosGet from '../api/axiosInstance';
 import BatteryDonutChart from './chart/batteryDonut';
 import NetworkError from './option/networkError';
 import RobotImg from '../assets/images/robot.png';
 import { FaCircle } from "react-icons/fa";
-import { BiError } from "react-icons/bi";
-
+ 
 // Define an interface for the component's props for type safety
 
 
@@ -19,7 +18,7 @@ import { BiError } from "react-icons/bi";
 const Vehicle = () => {
   const timerInterval = useRef<ReturnType<typeof setInterval> | null>(null);
   const [agvAll, setAgvAll] = useState<IPayload[]>([]);
-  const [loadSuccess, setLoadSuccess] = useState(true);
+  const [loadSuccess, setLoadSuccess] = useState(false);
   const [onlineBar, setOnlineBar] = useState<null | boolean>(null);
   const onlineRef = useRef<boolean | null>(null);
   const [checkNetwork, setCheckNetwork] = useState(true);
@@ -87,8 +86,7 @@ const Vehicle = () => {
       }
     };
     checkNetwork();
-    setLoadSuccess(true);
-    return () => {
+     return () => {
       if (timerInterval.current) {
         clearInterval(timerInterval.current);
       }
