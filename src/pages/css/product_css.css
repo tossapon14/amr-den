@@ -1,0 +1,250 @@
+#product {
+    background-color: #EFF0F4;
+    padding-bottom: 100px;
+    box-sizing: border-box;
+    padding-bottom: 20%;
+}
+
+#product th{
+    font-size: 12px;
+    color:#5a5a5a;
+}
+#product .bigtable tr:hover {
+    background-color: rgb(224, 248, 224);
+    cursor: pointer;
+
+}
+
+
+#product .clickBg {
+    background-color: rgb(192, 250, 192);
+    cursor: pointer;
+}
+
+#product .description {
+    background-color: #FCFCFC;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    z-index: 1;
+}
+
+#product .noData {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin: 50px 0;
+    padding: 1rem;
+    border-radius: 4px;
+    color: aliceblue;
+    background-color: red;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+#product .bg-white {
+    background-color: rgba(0, 0, 0, 0);
+    border-bottom: #dedfe0;
+}
+
+#product .Qway-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    gap: 10px;
+    background: #AC161E;
+    border-radius: 10px;
+    font-size: 120%;
+}
+
+#product .Whway-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    gap: 10px;
+    background: #1646ac;
+    border-radius: 10px;
+    font-size: 120%;
+}
+
+#product .statusBox {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 4px;
+    border-radius: 4px;
+    font-weight: 800;
+}
+
+#product .statusBox2 {
+    width: fit-content;
+    margin: 1rem 0;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 20px;
+
+}
+
+#product .bigtable {
+    padding: 12px 0 50px;
+    background-color: #ffffff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    max-height: fit-content;
+    max-width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+#product .BoxTable {
+    max-height: 750px;
+    font-size: 90%;
+    padding-bottom: 2%;
+    
+}
+
+#product input[type='search'] {
+    margin: 0 0 12px;
+    background-color: white;
+    padding: 5px;
+    width: 30%;
+    height: fit-content;
+    border-radius: 5px;
+    font-size: 18px;
+    border: 1px solid black !important;
+}
+
+#product input[type='date'] {
+    margin: 0 0 12px;
+    background-color: white;
+    padding: 5px;
+    width:auto;
+    height: fit-content;
+    border-radius: 5px;
+    font-size: 18px;
+    border: 1px solid black !important;
+}
+
+#product button {
+    background: #2052a2;
+    border-radius: 6px;
+    margin: 0 12px 20px;
+    width: fit-content;
+    height: fit-content;
+    color: white;
+    font-weight: bolder;
+
+}
+#product .BoxTable th{
+    position: sticky;
+    top: 0;
+    background-color: #CFD5DC;
+  }
+
+
+@media screen and (max-width:1460px) {
+    #product input[type="search"] {
+        width: 95%;
+    }
+}
+@media screen and (max-width:1460px) {
+    #product .BoxTable{
+        font-size: 90%;
+    }
+    
+    #product .description h4 {
+        font-size: 130%;
+    }
+}
+@media screen and (max-width:1200px) {
+    #product .BoxTable{
+        font-size: 70%;
+    }
+   
+    #product .description h4 {
+        font-size: 120%;
+    }
+}
+
+@media screen and (max-width: 996px) {
+    #product input[type="search"] {
+        width: 100%;
+    }
+
+    #product input[type='date'] {
+        font-size: 16px;
+        height: 40px;
+    }
+
+    #product .BoxTable {
+        font-size: 80%
+    }
+    
+    #product .description h4 {
+        font-size: 140%;
+    }
+
+    /* #product input[type='search']{
+        width: 90%;
+     } */
+}
+
+@media screen and (max-width: 770px) {
+    #product input[type="search"] {
+        width: 100%;
+    }
+    #product th{
+        font-size: 8px;
+    }
+
+    #product input[type='date'] {
+        font-size: 18px;
+    }
+
+    #product .BoxTable {
+        font-size: 60%;
+    }
+    #product .BoxTable .table{
+      min-width: 650px;
+    }
+}
+
+@media screen and (max-width: 553px) {
+    #product input[type='date'] {
+        font-size: 15px;
+    }
+}
+@media screen and (max-width: 500px) {
+    #product input[type='date'] {
+        font-size: 12px;
+        border-radius: 3px;
+    }
+    #product button{
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    #product input[type='date'] {
+        font-size: 12px;
+    }
+    #product button{
+        font-size: 12px;
+    }
+    #product .BoxTable {
+        font-size: 50%
+    }
+    #product .BoxTable .table{
+        width: 520px;
+     }
+}
+@media screen and (max-width: 399px) {
+    #product input[type='date'] {
+        font-size: 10px;
+    }
+  
+  }
+
+#product .bg-primary-bg {
+    background: #2052a2;
+}

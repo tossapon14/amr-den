@@ -1,0 +1,549 @@
+#page {
+  width: 100%;
+  height: fit-content;
+  background-color: #EFF0F4;
+}
+#page .labelfont{
+  font-family: "TFF-MED";
+}
+#page .box-of-scan{
+  z-index: 5;
+}
+#page .Bogie-scan {
+  padding: 0.5rem 1rem;
+  gap: 0px;
+  margin: 1rem 0.5rem;
+  width: 40%;
+  height: fit-content;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  box-shadow: rgba(45, 114, 243, 0.35) 0px -5px 15px;
+  display: block;
+}
+
+#page .bogie-box-header2 {
+  display: flex;
+  align-items: center;
+}
+
+#page .name-bogie2 {
+  font-family: "TFF-Italic";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 150%;
+  margin: 0;
+  padding: 0.5rem 0 0 1rem;
+  color: #1D53A3;
+}
+
+#page .Bogie-scan p {
+  padding-top: 1px;
+  margin: 1px;
+  color: #5B5F64;
+}
+
+#page label {
+  display: block;
+  font: 100% 'Fira Sans', sans-serif;
+}
+
+
+#page label+.input-scan {
+  margin-bottom: .5rem;
+  height: 30px;
+  width: 100%;
+  border: none;
+  color: black;
+  overflow-y: hidden;
+  background-color: #d9eaf8;
+  font-size: 130%;
+}
+#page .fontInput{
+  color:#5B5F64;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+#page .btn-scan {
+  width: 50%;
+  height: 15%;
+  text-align: center;
+  font-size: 100%;
+  float: right;
+  color: white;
+}
+
+#page .bogie-emtry {
+  display: flex;
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 16px;
+  font-weight: 900;
+  float: right;
+  color: white;
+  background-color: #a70c14;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+#page .bogie-not-emtry {
+  display: flex;
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 900;
+  float: right;
+  color: white;
+  background-color: #21970c;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+
+#page .bg-grey {
+  background-color: #A1A8B0;
+}
+
+#page .bg-green {
+  background-color: #21970c;
+  color: white;
+}
+
+#page .btn-conf-all {
+  margin-right: 1rem;
+  width: 18%;
+  height: 12%;
+  font-size: 100%;
+  float: right;
+  text-align: center;
+  color: white;
+
+}
+
+/* #page .Bogie-scan .box-decoration{
+  margin-bottom: .1rem;
+  height: 20px;
+  width: 100%;
+  border: none;
+  background-color: #fdf7bc;
+  
+} */
+
+#page table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: 0 0 5rem 1rem;
+
+}
+#page tbody{
+  font-family: "TFF-MED";
+}
+
+#page td,
+#page th {
+  padding: 8px 16px;
+  font-size: 100%;
+  text-align: center;
+  
+}
+
+#page th {
+  background: #CFD5DC;
+}
+
+
+#page tr:nth-child(4n),
+#page tr:nth-child(4n-1) {
+  background-color: #EFF0F4;
+}
+
+#page .btn-box {
+  width: fit-content;
+  height: fit-content;
+  background-color: #5B5F64;
+  color: red;
+  border-radius: 5px;
+  padding: 0.3rem;
+  font-size: 100%;
+}
+
+
+
+#page .box-table {
+  padding-bottom: 2rem;
+  background-color: #FFFFFF;
+}
+
+#page .robot-info {
+  background: #FFFFFF;
+  box-shadow: rgba(37, 38, 41, 0.35) 0px 5px 15px;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+#page .scan-description {
+  background: #FFFFFF;
+  padding: 1rem;
+  border-radius: 10px;
+  width: 100%;
+  height: fit-content;
+  box-shadow: rgba(37, 38, 41, 0.35) 0px 5px 15px;
+  margin-top: 1rem;
+}
+
+#page button span {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: white;
+  padding-left: 0.5rem;
+}
+
+#page .img-truck {
+  width: auto;
+  height: 10%;
+  width: 10%;
+  align-items: center;
+  margin: 12px;
+}
+
+#page .truck-status-btn {
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  height: 40px;
+  text-align: center;
+  font-size: 14px;
+}
+
+#page .box-battery {
+  display: flex;
+  align-items: center;
+  padding: auto auto;
+  justify-content: flex-end;
+  width: 90%;
+}
+
+#page .statusBox {
+  width: fit-content;
+  height: fit-content;
+  margin: 12px 0;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 1.2em;
+}
+
+#page .way-btn2 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 12px;
+  gap: 10px;
+  background: #AC161E;
+  border-radius: 10px;
+  font-size: 1.5em;
+}
+
+#page .IconBox {
+  width: 3rem;
+  height: 3rem;
+  margin-right: 0.5rem;
+}
+#page .card-right{
+  font-size: 16px;
+}
+
+
+#page .bg-primary-bg {
+  background: #2052a2;
+}
+#page .h5tdsize{
+  font-size: 1.3em;
+  margin:auto -10px;
+  padding: 0;
+  cursor: pointer;
+}
+.fontbattery2{
+  font-size: 1.6em;
+}
+.iconbattery2{
+  font-size: 4.5em;
+}
+.fontlight2{
+  font-size:1.2em
+}
+@media screen and (max-width:1550px) {
+  #page .card-right {
+    font-size:14px;
+  }
+}
+@media screen and (max-width:1400px) {
+  #page .Bogie-scan {
+    font-size: 80%;
+  }
+
+  #page .name-bogie2 {
+    font-size: 130%;
+  }
+
+  #page .IconBox {
+    width: 2rem;
+    height: 2rem;
+    /* margin-right: 0.5rem; */
+  }
+
+  #page .card-right {
+    margin-right: 0;
+    font-size: 12px;
+  }
+  #page .robot-info {
+    padding: 1rem;
+  }
+
+  #page .statusBox {
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  #page .card-right hr {
+    margin: 8px 0;
+  }
+
+
+  #page .way-btn2 {
+    margin: -5px 0;
+    padding: 5px 8px;
+    border-radius: 5px;
+  }
+
+  #page td,
+  #page th {
+    font-size: 70%;
+  }
+  #page .Bogie-scan {
+    padding: 0.5rem;
+  }
+
+}
+
+@media screen and (max-width:1200px) {
+  #page .Bogie-scan {
+    font-size: 65%;
+  }
+
+  #page .card-right {
+    font-size: 10px;
+  }
+
+  #page .IconBox {
+    width: 1.5rem;
+    height: 1.5rem;
+    /* background-color: #21970c; */
+    /* margin-right: 0.5rem; */
+  }
+
+  #page .robot-info {
+    padding: 0rem 0.5rem 1rem 0.5rem;
+  }
+
+  #page .Bogie-scan hr {
+    margin: 5px 0;
+  }
+
+  #page .statusBox {
+    margin: 0 0;
+    /* border-radius: 5px; */
+  }
+
+  #page td,
+  #page th {
+    font-size: 50%;
+    text-align: center;
+  }
+  #page .way-btn2 {
+    font-size: 110%;
+    border-radius: 6px;
+  }
+ 
+  #page .h5tdsize{
+    font-size: 110%;
+  }
+  #page .bogie-not-emtry,
+  #page .bogie-emtry {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width:992px) {
+  #page .scan-description button {
+    font-size: 110%;
+  }
+  #page h5.h5size {
+    font-size: 1.4em;
+  }
+
+}
+
+@media screen and (max-width:835px) {
+  #page .Bogie-scan {
+    font-size: 50%;
+    padding: 0.5rem;
+  }
+
+  #page label+.input-scan {
+    height: 24px;
+  }
+
+  #page .IconBox {
+    width: 1rem;
+    height: 1rem;
+    /* background-color: #21970c; */
+    margin-right: 0.5rem;
+  }
+  #page .bogie-not-emtry,
+  #page .bogie-emtry {
+    font-size: 10px;
+  }
+  #page .statusBox{
+    font-size: 1.2em;
+    padding: 8px;
+  }
+  .fontbattery2{
+    font-size: 1.2em;
+  }
+  .iconbattery2{
+    font-size: 4em;
+  }
+ 
+}
+
+@media screen and (max-width:767px) {
+  #page .Bogie-scan {
+    font-size: 75%;
+  }
+ 
+
+  #page td,
+  #page th {
+    font-size: 50%;
+  }
+
+  #page .card-right {
+    font-size: 16px;
+    padding: 1rem;
+  }
+
+  #page .robot-info {
+    padding: 1rem;
+  }
+
+
+  #page .statusBox {
+    padding: 12px;
+    margin-top: 16px;
+    margin-right: 0px;
+    border-radius: 10px;
+    font-size: 1.3em;
+
+  }
+
+  .fontbattery2{
+    font-size: 1.8em;
+  }
+  .iconbattery2{
+    font-size: 4.8em;
+  }
+  .fontlight2{
+    font-size:1.2em
+  }
+  #page .p-queue {
+    margin-bottom: 16px;
+  }
+
+  #page .way-btn2 {
+    padding: 10px;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+  }
+
+  #page .card-right hr {
+    margin: 16px 0;
+  }
+
+  #page .scan-description button {
+    font-size: 130%;
+    padding: 0.5rem;
+  }
+
+
+  #page .h5tdsize{
+    font-size: 130%;
+    /* margin:auto -10px; */
+  }
+  #page .bogie-not-emtry,
+  #page .bogie-emtry {
+    font-size: 12px;
+  }
+  #page .box-table .table{
+    min-width: 550px;
+  }
+  #page .box-of-scan{
+    min-width: 576px;
+  }
+}
+
+@media screen and (max-width:576px) {
+  #page .Bogie-scan {
+    font-size: 60%;
+  }
+  #page .card-right {
+    font-size: 14px;
+  }
+
+  #page .bogie-not-emtry,
+  #page .bogie-emtry {
+    font-size: 8px;
+  }
+
+}
+
+@media screen and (max-width:495px) {
+ 
+  #page .IconBox {
+    width: 0.8rem;
+    height: 0.8rem;
+    margin-right: 0;
+
+  }
+  #page .card-right {
+    font-size: 12px;
+  }
+
+
+
+  #page .bogie-not-emtry,
+  #page .bogie-emtry {
+    margin-top: 0.5rem;
+  }
+
+  #page label+.input-scan {
+    height: 20px;
+  }
+
+  #page td,
+  #page th {
+    font-size: 40%;
+  }
+  #page .box-of-scan{
+    min-width: 500px;
+  }
+  #page .box-table .table{
+    min-width: 500px;
+  }
+
+}

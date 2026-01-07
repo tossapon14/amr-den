@@ -1,0 +1,176 @@
+.statistics-box {
+    padding: 32px 32px 32px;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: rgb(245, 245, 245);
+}
+
+.stat-card-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.stat-chart-pickup {
+    width: 100%;
+    min-height: 450px;
+    height: auto;
+    margin: 1.5rem 0;
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: visible;
+    gap: 1rem;
+}
+
+.stat-chart-pickup .pickup-chart {
+    background-color: white;
+    height: 450px;
+    border-radius: 6px;
+    border-top: red 3px solid;
+    padding: 12px;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+}
+
+.stat-chart-drop {
+    width: 100%;
+    height: 450px;
+    margin: 1rem 0;
+    background-color: white;
+    border-radius: 6px;
+    border-top: red 3px solid;
+    padding: 12px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.stat-card-box .stat-card {
+    overflow: hidden;
+    min-width: 120px;
+    width: 220px;
+    height: 140px;
+    border-radius: 5px;
+    box-shadow: rgba(179, 179, 179, 0.65) 0px 3px 4px;
+    color:white;
+    position: relative;
+
+}
+.bg-Circle-white{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: rgba(248, 248, 248, 0.1);
+    position: absolute;
+}
+.stat-card:nth-child(1) {
+    background: linear-gradient(135deg, #7b9cff  0%, #001f62 100%);
+}
+.stat-card:nth-child(2) {
+    background: linear-gradient(135deg, #51ff5a  0%, #005d34 100%);
+}
+.stat-card:nth-child(3) {
+    background: linear-gradient(135deg, #ff7c7c  0%, #8f0000 100%);
+}
+.stat-card:nth-child(4) {
+    background: linear-gradient(135deg, #cfcfcf  0%, #3e3e3e 100%);
+}
+
+.option-miss-or-pall {
+    width: fit-content;
+    padding: 16px 32px;
+    height: 50px;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    border-left: red 4px solid;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+}
+
+.option-miss-or-pall input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-inline: 10px;
+}
+
+.option-miss-or-pall-in-graph {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+}
+.option-miss-or-pall-in-graph h5{
+    font-size: 16px;
+}
+
+.option-miss-or-pall-in-graph input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-inline: 10px;
+}
+
+.stat-card-option {
+    width: 250px !important;
+    height: 160px !important;
+    background-color: royalblue;
+}
+
+.stat-box-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.085);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
+
+}
+
+.stat-number {
+    width: 100%;
+    text-align: end;
+    font-size: 2rem;
+    font-weight: 900;
+    padding-right: 14px;
+    margin: 0;
+}
+
+.label-footer {
+    width: 100%;
+    height: 40px;
+    text-align: end;
+    font-size: 0.7rem;
+    padding: 6px 8px 0 0;
+    /* background-color: #e9eeff; */
+}
+
+.label-footer span {
+    font-size: 0.8rem;
+}
+
+.stat-card p {
+    margin: 0 12px;
+}
+
+.chart-donus-box {
+    height: 450px;
+    padding: 16px;
+    background-color: white;
+    border-radius: 6px;
+    border-top: red 3px solid;
+ 
+}
+
+.p-subtitle {
+    margin: 0;
+    color: #7c7c7c;
+    font-size: 14px;
+}
+.chart-all-show-text{
+    margin-right: 12px;
+    margin-left: auto;
+}
+.statistics-box input[type=checkbox]{
+    accent-color: red;
+}

@@ -1,0 +1,33 @@
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  margin: 0;
+  background-color: #F4F4F4 !important;
+  overflow-y: hidden;
+}
+*{
+    font-family: 'K2D-Regular', sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+@font-face {
+  font-family: 'K2D-Regular';
+  src: local('K2D Regular'), url("../fonts/K2D/K2D-Regular.ttf") format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'K2D-Medium';
+  src: local('K2D Medium'), url("../fonts/K2D/K2D-Medium.ttf") format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'K2D-Bold';
+  src: local('K2D Bold'), url("../fonts/K2D/K2D-Bold.ttf") format('truetype');
+  font-weight: 700;
+}

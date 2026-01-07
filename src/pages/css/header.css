@@ -1,0 +1,55 @@
+.timer-clock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: normal;
+    color: #cc0000;
+}
+
+.headder-nav-bar {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffffff;
+    width: 100%;
+    height:var(--header-height);
+    position: fixed;
+    z-index: 10;
+}
+.headder-nav-bar .iconNav{
+    display: none;
+    padding: 2px;
+    /* background: linear-gradient(135deg, rgb(11, 97, 255) 0%, rgb(130, 222, 255) 100%); */
+    background-color: #87ff8d63;
+    border-radius: 4px;
+}
+
+.language-box {
+    width: fit-content;
+    height: 20px;
+    position: relative;
+}
+
+.btn-language {
+    display: flex;
+    border-radius: 4px;
+    height: 24px;
+    padding-inline: 8px;
+    border: none;
+    /* overflow: hidden; */
+}
+
+.btn-language+.select-language-box {
+    background-color: rgba(221, 221, 221, 0.458);
+    width: 120px;
+    border-radius: 4px;
+    padding: 8px;
+    position: absolute;
+    top: 25px;
+    left: 0;
+    z-index: 1;
+}
+.icon-user{
+    font-size:14px
+}

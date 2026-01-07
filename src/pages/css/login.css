@@ -1,0 +1,290 @@
+#login-wrapper {
+    width: 100vw;
+    height: 100%;
+    overflow: hidden;
+}
+
+#login {
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    font-size: 10px;
+    background-position: center;
+    background-size: auto 100%;
+    overflow: hidden;
+    background-image: url("../../assets/images/Densobanner.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: background-fade 1s linear forwards;
+    z-index: 0;
+    will-change: transform, opacity;
+
+}
+
+@keyframes background-fade {
+    0% {
+        transform: scale(1.05);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#login>.about-version {
+    position: fixed;
+    bottom: 4px;
+    right: 0;
+    padding-right: 12px;
+    font-size: 16px;
+    z-index: 5;
+    /* background:#fc0238; */
+}
+
+#login .formBx {
+    width: 400px;
+    height: 400px;
+    border-radius: 20px;
+    border: 2px white solid;
+    z-index: 2;
+    background-color: transparent;
+    backdrop-filter: blur(16px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    animation: form-fade .5s ease-out forwards;
+    animation-delay: 1s;
+    opacity: 0;
+}
+
+#login .logoposition {
+    top: 40vh;
+    left: 200px;
+    transition: all 1s;
+}
+
+@keyframes form-fade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#login .profile {
+    padding: 2rem 2rem;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px white solid;
+    z-index: 2;
+    background-color: transparent;
+    backdrop-filter: blur(16px);
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4em;
+    animation: form-fade 1s ease-out forwards;
+    animation-delay: 1s;
+    opacity: 0;
+}
+
+#login .subprofile-box {
+    width: 320px;
+
+}
+
+
+.profile div h3 {
+    font-size: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+
+#login h1 {
+    font-weight: 600;
+    font-size: 20px;
+    text-transform: uppercase;
+    width: auto;
+    color: #FFFFFF;
+    text-align: center;
+    /* background-color: #fc0238; */
+}
+
+#login .input-textbox {
+    position: relative;
+    color: white;
+    margin: 32px 0 40px;
+    border-bottom: 2px solid #fff;
+}
+
+.input-textbox>label {
+    font-size: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: absolute;
+    left: 5px;
+    top: 30%;
+    /* transform: translateY(50%); */
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-textbox>span {
+    position: absolute;
+    right: 5px;
+    top: 20%;
+    font-size: 2em;
+}
+
+
+
+.input-textbox>input {
+    width: 280px;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1.5rem;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.input-textbox>input:not(:placeholder-shown)+label,
+.input-textbox>input:focus+label {
+    top: -20px;
+}
+
+#login .signup {
+    color: rgba(189, 189, 189, 0.855);
+    font-weight: 300;
+    text-align: center;
+}
+
+#login .signup a {
+    font-weight: 600;
+    text-decoration: none;
+    color: #fc0238;
+    font-size: 1.2em;
+}
+
+#login .btn-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 40px;
+    padding: 15px;
+    margin-top: 24px;
+    background: var(--login-button-color);
+    color: #e0dfdf;
+    border-radius: 20px;
+    border: none;
+}
+
+#login .btn-login:hover {
+    transform: scale(1.02);
+    background: var(--login-button-color-hover)
+}
+#login .btn-signout:hover,
+#login .btn-login:active {
+    transform: scale(0.95);
+    background: var(--login-button-color);
+}
+
+#login .btn-signout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 40px;
+    padding: 15px;
+    margin: 8px 0;
+    background: var(--login-button-color);
+    color: #e0dfdf;
+    border-radius: 20px;
+}
+
+
+.text-error-login {
+    color: #ff0000;
+    font-size: 16px;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: rgb(255, 122, 122);
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.loading-background-login {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+
+
+@media screen and (max-width: 991px) {
+    #login h1 {
+        font-size: 18px;
+    }
+
+    #login .formBx {
+        width: 320px;
+        height: 350px;
+    }
+
+    .input-textbox>input {
+        width: 250px;
+    }
+
+
+    #login .subprofile-box {
+        width: 290px;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    #login .formBx {
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 0px;
+    }
+
+    .profile>h1 {
+        margin: 0 0 30px !important;
+    }
+
+    #login .profile {
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 0px;
+    }
+
+    #login .subprofile-box {
+        width: clamp(250px, 85%, 300px);
+
+    }
+
+}
