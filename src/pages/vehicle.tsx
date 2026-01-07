@@ -28,8 +28,14 @@ const Vehicle = () => {
   const { t } = useTranslation("vehicle");
   const lastBackup = import.meta.env.VITE_REACT_APP_LAST_BACKUP
   const windowOfData = (name: string, index: number) => {
-    setAgvAll(prev => prev.map(agv => agv.name === name ? { ...agv, windowData: index } : agv))
-  }
+  setAgvAll(prev =>
+    prev.map(agv => {
+      if (agv.name !== name) return agv;
+      if (agv.windowData === index) return agv;
+      return { ...agv, windowData: index };
+    })
+  );
+};
 
   useEffect(() => {
     const getStore = sessionStorage.getItem("user")?.split(",")
@@ -72,9 +78,9 @@ const Vehicle = () => {
         const response = await fetch(import.meta.env.VITE_REACT_APP_API_URL, { method: "GET" });
         if (response.ok) {
           getAgv();
-          // timerInterval.current = setInterval(() => {
-          //   getAgv();
-          // }, 4000);
+          timerInterval.current = setInterval(() => {
+            getAgv();
+          }, 4000);
         }
       } catch (e: any) {
         console.error(e);
