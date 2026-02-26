@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import '../pages/css/vehicle.css';
 import { useTranslation } from 'react-i18next';
 import StatusOnline from './option/statusOnline';
@@ -9,6 +9,7 @@ import BatteryDonutChart from './chart/batteryDonut';
 import NetworkError from './option/networkError';
 import RobotImg from '../assets/images/robot.png';
 import { FaCircle } from "react-icons/fa";
+import AGV1 from '../assets/images/agv1.png';
  
 // Define an interface for the component's props for type safety
 
@@ -26,16 +27,17 @@ const Vehicle = () => {
   const myPosition = useRef<string>("");
   const myUser = useRef<string>("");
   const { t } = useTranslation("vehicle");
+  const [agvSelected, setAgvSelected] = useState<Map<string, number>>(new Map());
   const lastBackup = import.meta.env.VITE_REACT_APP_LAST_BACKUP
+  const agvSelectedMap = useRef<Map<string, number>>(new Map());
+  
+  
+  
   const windowOfData = (name: string, index: number) => {
-  setAgvAll(prev =>
-    prev.map(agv => {
-      if (agv.name !== name) return agv;
-      if (agv.windowData === index) return agv;
-      return { ...agv, windowData: index };
-    })
-  );
-};
+    const newMap = new Map(agvSelected);
+    newMap.set(name, index);
+    setAgvSelected(newMap);
+  };
 
   useEffect(() => {
     const getStore = sessionStorage.getItem("user")?.split(",")
@@ -55,9 +57,11 @@ const Vehicle = () => {
         }
         const agv = res.data.payload as IPayload[];
         console.log("AGV Data:", agv);
-
-        const _agv = agv.map(a => ({ ...a, windowData: 0 }));
-        setAgvAll(_agv);
+         agv.forEach((agv) => {
+          if (!agvSelectedMap.current.has(agv.name)) { 
+          agvSelectedMap.current.set(agv.name, 0);   
+        } });   
+        setAgvAll(agv);
       } catch (e: any) {
         console.error(e);
         if (e.message === "Network Error") {
@@ -92,6 +96,7 @@ const Vehicle = () => {
       }
     };
     checkNetwork();
+    setAgvSelected(agvSelectedMap.current); 
      return () => {
       if (timerInterval.current) {
         clearInterval(timerInterval.current);
@@ -127,7 +132,7 @@ const Vehicle = () => {
               <div className="vehicle-content">
                 <div className="d-flex flex-column align-items-center">
                   <div className="robot-img">
-                    <img src={RobotImg} alt='robot' style={{ width: "100px", height: "100px" }} />
+                    <img src={AGV1} alt='robot' style={{ width: "110px", height: "110px" }} />
                   </div>
                   {agv.alarm_state&&<div className="alarm-block">
                     <div className="alarm-icon">⚠️</div>
@@ -196,12 +201,12 @@ const Vehicle = () => {
 
               <div className="footer">
                 <div className="btn-group">
-                  <button className={`${agv.windowData === 0 ? "active" : ''}`} onClick={() => windowOfData(agv.name, 0)}>Status</button>
-                  <button className={`${agv.windowData === 1 ? "active" : ''}`} onClick={() => windowOfData(agv.name, 1)}>Mission</button>
-                  <button className={`${agv.windowData === 2 ? "active" : ''}`} onClick={() => windowOfData(agv.name, 2)}>Path</button>
+                  <button className={`${agvSelected.get(agv.name) === 0 ? "active" : ''}`} onClick={() => windowOfData(agv.name, 0)}>Status</button>
+                  <button className={`${agvSelected.get(agv.name) === 1 ? "active" : ''}`} onClick={() => windowOfData(agv.name, 1)}>Mission</button>
+                  <button className={`${agvSelected.get(agv.name) === 2 ? "active" : ''}`} onClick={() => windowOfData(agv.name, 2)}>Path</button>
                 </div>
               </div>
-              {agv.windowData === 0 && <div className="d-flex py-3">
+              {agvSelected.get(agv.name) === 0 && <div className="d-flex py-3">
                 <BatteryDonutChart level={agv.connected ? agv.battery : 0}></BatteryDonutChart>
 
                 <div className="info2">
@@ -224,12 +229,12 @@ const Vehicle = () => {
                   </div>
                   <div className="info-row">
                     <span className="label">Coordinate</span>
-                    <span className="value">{agv.coordinate.map(ele => ele.toFixed(4)).join()}</span>
+                    <span className="value">{agv.coordinate.map(ele => ele.toFixed(3)).join()}</span>
                   </div>
 
                 </div>
               </div>}
-              {agv.windowData === 1 && <div className="d-flex flex-wrap pt-3 px-0">
+              {agvSelected.get(agv.name) === 1 && <div className="d-flex flex-wrap pt-3 px-0">
                 <div className="info2 mx-1">
                   <div className="info-row">
                     <span className="label">Mission</span>
@@ -271,20 +276,20 @@ const Vehicle = () => {
                 </div>
 
               </div>}
-              {agv.windowData === 2 && <div className="d-flex flex-wrap pt-3 px-0">
+              {agvSelected.get(agv.name) === 2 && <div className="d-flex flex-wrap pt-3 px-0">
                 <div className="info-path mx-1">
                   <div className="info-row">
                     <span className="label">Pass node</span>
-                    <span className="value">{agv.mission?.passed_nodes.join()}</span>
+                    <span className="value">{agv.mission?.passed_nodes??[].join()}</span>
                   </div>
                   <div className="info-row">
                     <span className="label">Station</span>
-                    <span className="value">{agv.mission?.stations.join()}</span>
+                    <span className="value">{agv.mission?.stations??[].join()}</span>
                   </div>
 
                   <div className="info-row">
                     <span className="label">Nodes</span>
-                    <span className="value">{agv.mission?.nodes.join()}</span>
+                    <span className="value">{agv.mission?.nodes??[].join()}</span>
                   </div>
 
                 </div>

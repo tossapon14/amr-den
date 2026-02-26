@@ -3,7 +3,7 @@ import { parsePGM } from './map_pgm_canvas';
 import './css_map_command.css';
 import { FaCircle } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import { axiosPost } from '../../api/axiosFetch';
+import { axiosPost, axiosGet } from '../../api/axiosFetch';
 import ResponseAPI from './responseAPI';
 
 export default function MapCommand({ funcClick, data }: { funcClick: () => void, data: { show: boolean, v_name: string, online: boolean } }): React.ReactElement {
@@ -13,11 +13,31 @@ export default function MapCommand({ funcClick, data }: { funcClick: () => void,
     const useUrgentCheck = useRef<HTMLInputElement>(null);
     const controller = useRef<AbortController>(new AbortController());
     const [responseData, setResponseData] = useState<{ error: boolean | null, message?: string }>({ error: null });
+    const [nodesWithPixel, setNodesWithPixel] = useState<any[]>([]);
+    const mapMeta = useRef({
+        width: 0,
+        height: 0,
+        resolution: import.meta.env.VITE_REACT_APP_RESOLUTION ? parseFloat(import.meta.env.VITE_REACT_APP_RESOLUTION) : 0.05,
+        originX: import.meta.env.VITE_REACT_APP_ORIGIN ? parseFloat(import.meta.env.VITE_REACT_APP_ORIGIN.split(",")[0]) : -185,
+        originY: import.meta.env.VITE_REACT_APP_ORIGIN ? parseFloat(import.meta.env.VITE_REACT_APP_ORIGIN.split(",")[1]) : -45
+    });
+    const worldtopixel = (pose: { x: number; y: number; }): { x: number, y: number } => {
+        const { resolution, originX, originY, height } = mapMeta.current;
+        // world → map pixel
+        const px = (pose.x - originX) / resolution;
+        const py = (pose.y - originY) / resolution;
+
+        return { x: px, y: height - py };
+    };
 
 
-
-
-
+    const getCanvasScale = () => {
+        const canvas = canvasRef.current!;
+        return {
+            scaleX: canvas.clientWidth / canvas.width,
+            scaleY: canvas.clientHeight / canvas.height
+        };
+    };
     const clickStationBtn = (stationCode: string, zone: string) => {
         setAddStation(prev => [...prev, { stationCode, zone }]);
     }
@@ -49,7 +69,28 @@ export default function MapCommand({ funcClick, data }: { funcClick: () => void,
 
 
 
+    useEffect(() => {
+        const loadNodes = async () => {
+            try {
+                const res = await axiosGet("/node/nodes");
+                const _nodesWithPixel = res.payload.filter((node: any) => node.node_type === "viapoint").map((node: any) => {
+                    const { x, y } = worldtopixel({ x: node.coordinate[0], y: node.coordinate[1] });
+                    const { scaleX, scaleY } = getCanvasScale();
+                    const offset =  worldtopixel({ x: 0, y: 0 });
+                    return { name: node.name, pixel: [(x - offset.x) * scaleX, (y - offset.y) * scaleY] };
 
+                });
+                setNodesWithPixel(_nodesWithPixel);
+                console.log(_nodesWithPixel);
+            } catch (e) {
+                console.error(e);
+            }
+        };
+        if (data.show) {
+            loadNodes();
+        }
+
+    }, [data.show]);
     useEffect(() => {
         const loadPGM = async () => {
             try {
@@ -61,7 +102,8 @@ export default function MapCommand({ funcClick, data }: { funcClick: () => void,
                 const canvas = canvasRef.current!;
                 canvas.width = header.width;
                 canvas.height = header.height;
-
+                mapMeta.current.width = header.width;
+                mapMeta.current.height = header.height;
                 const ctx = canvas.getContext("2d")!;
                 const img = ctx.createImageData(header.width, header.height);
 
@@ -77,8 +119,9 @@ export default function MapCommand({ funcClick, data }: { funcClick: () => void,
                 console.error(e);
             }
         };
+     
         loadPGM();
-        return ()=>{
+        return () => {
             controller.current.abort();
         }
     }, []);
@@ -96,8 +139,14 @@ export default function MapCommand({ funcClick, data }: { funcClick: () => void,
                 >
                     <div className="map-canvas-container">
                         <canvas ref={canvasRef} className='map-canvas'></canvas>
-                        <button className='station-btn' style={{ top: "10px", left: "10px" }} onClick={() => clickStationBtn("B1", "zone 1")}>B1</button>
-                        <button className='station-btn' style={{ top: "100px", left: "300px" }} onClick={() => clickStationBtn("B2", "zone 2")}>B2</button>
+                        {nodesWithPixel.map((node, i) =>
+                            <button key={node.name} className='station-btn'
+                                style={{
+                                    left: `${node.pixel[0]}px`,
+                                    top: `${node.pixel[1]}px`
+                                }} onClick={() => clickStationBtn(node.name, "zone 1")}>{node.name}</button>
+                        )}
+
                     </div>
                     <div className="robot-container">
                         <div className="header-robot-command">
@@ -113,7 +162,7 @@ export default function MapCommand({ funcClick, data }: { funcClick: () => void,
                         <button className='btnGoHome'>Gohome</button>
                         <div className="station-line-process">
                             {addStation.map((station, index) => (
-                                <div key={index} className="d-flex flex-row justify-content-between align-items-center add-animation">
+                                <div key={index} className="d-flex flex-row justify-content-between align-items-center add-animation" style={{ background: `${index === 0 ? "#ffffff3b" : ""}`, padding: `${index === 0 ? "12px 12px 12px 12px" : ""}` }}>
                                     <div>
                                         <div className="station-name">{station.stationCode}</div>
                                         <div className="station-sub">{station.zone}</div>

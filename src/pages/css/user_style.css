@@ -7,6 +7,22 @@
      z-index: 0;
  }
 
+ .user-box-page {
+     padding-top: 32px;
+     width: 100%;
+     overflow: auto;
+     background-image: url("../../assets/images/Densobanner.jpg");
+     background-repeat: no-repeat;
+     background-size: cover;
+ }
+
+ .title1 {
+     display: flex;
+     align-items: center;
+     column-gap: 12px;
+     margin-bottom: 0;
+ }
+
  .user-card .title {
      width: 290px;
  }
@@ -18,10 +34,11 @@
  }
 
  .user-card {
+     border-top: 4px solid #e80000;
      border-radius: 12px;
      height: auto;
      padding-bottom: 1rem;
-     background-color: rgb(255, 255, 255) !important;
+     background-color: rgba(255, 255, 255, 0.879) !important;
  }
 
  .create-reload-mobile-button {
@@ -33,21 +50,24 @@
  }
 
  .box-of-search input[type='text'] {
-     border: 1px solid #bababa;
      height: 2rem;
      width: 100%;
      min-width: 100px;
      max-width: 300px;
      border-radius: 5px;
+     outline: none;
+     border: 1px solid #d7d7d7;
+     transition: border-color 0.3s ease;
  }
 
  .box-of-search input:focus {
-     background-color: #deffff;
+     outline: none;
+     border: 1px solid #ff5050;
 
  }
 
  .box-of-search input[type="checkbox"] {
-     background-color: #deffff;
+     accent-color: #ff5050;
      width: 1rem;
      height: 1rem;
      margin-right: 1rem;
@@ -127,10 +147,12 @@
      min-height: 600px;
      overflow: auto;
      font-size: 10px;
+     background-color: #ffffff;
  }
 
  .table-user th {
      color: #4a4a4a !important;
+     font-size: 14px;
  }
 
  .fixed-bg-delete {

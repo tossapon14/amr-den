@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import './css/home.css';
 import MapPGMCanvas from './option/map_pgm_canvas';
 import { FaCircle } from "react-icons/fa";
-import MapCommand from './option/map_command';
+import MapCommand from './option/map_command2';
 import { BiSolidError, BiError } from "react-icons/bi";
 import { IoCloseOutline, IoChevronDownSharp } from "react-icons/io5";
 import { axiosGet } from '../api/axiosFetch';
@@ -12,7 +12,6 @@ import HomeAlarmError from './option/homeAlarmError';
 import NotAuthenticated from './option/notAuthenticated';
 import LowBatt from '../assets/images/low-battery.png';
 import { PiBatteryWarningVerticalFill } from "react-icons/pi";
-
 
 interface AppProps {
   title: string;
@@ -121,6 +120,7 @@ interface IGetCanDrop {
   blocked_dropoffs: string[]
   available_dropoffs: string[]
 }
+
 // Use React.FC (FunctionComponent) type for the component
 const Home = () => {
   const [showDialog, setShowDialog] = useState<{ show: boolean, v_name: string, online: boolean }>({ show: false, v_name: "", online: false });
@@ -144,7 +144,8 @@ const Home = () => {
   const [loadSuccess, setLoadSuccess] = useState(false);
   const { t } = useTranslation("home");
   const showInfoRobot = useRef<{ [key: string]: boolean }>({});
-
+  const [robotPose, setRobotPose] = useState<Map<string, { x: number; y: number; theta: number }>>(new Map());
+  const robotPoseRef = useRef<Map<string, { x: number; y: number; theta: number }>>(new Map());
 
   const playRingtone = () => {
     if (import.meta.env.VITE_REACT_APP_USE_AUDIO === "true") {
@@ -199,7 +200,7 @@ const Home = () => {
       const _agv: IPayload[] = [];
       const _currentMissionId: number[] = [];
       var haveAlarm: boolean = false;
-      console.log(res.payload)
+      // console.log(res.payload)
       res.payload.forEach((data: IPayload) => {
         var _agvData: IPayload;
         if (showInfoRobot.current[data.name] === undefined) {
@@ -211,6 +212,14 @@ const Home = () => {
         }
         const showInfo = showInfoRobot.current[data.name];
         data.showInfo = showInfo;
+        robotPoseRef.current.set(
+          data.name,
+          {
+            x: data.coordinate[0],
+            y: data.coordinate[1],
+            theta: data.coordinate[2]
+          }
+        );
         if (data.state > 0) {
           _agvPosition2.push({ name: data.name, position: data.coordinate });
           if (data.mission) {
@@ -220,6 +229,7 @@ const Home = () => {
 
 
           }
+
           _agvData = {
             ...data
           }
@@ -249,8 +259,7 @@ const Home = () => {
         }
         _agv.push(_agvData);
       });
-
-
+       setRobotPose(new Map(robotPoseRef.current));
       setAgvAll(_agv);
       if (haveAlarm) {
         setAgvHaveAlarm(selectAgv.current);
@@ -312,7 +321,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <MapPGMCanvas />
+      <MapPGMCanvas robots={robotPose} />
       <div className="robot-info-panel">
         {agvAll.map(agv => <div key={agv.name} className="tracker-card">
           <div className="plane-image">

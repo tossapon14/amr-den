@@ -12,7 +12,7 @@
     "tb_id": "id",
     "tb_user": "Username",
     "tb_empl": "Employee",
-    "tb_position": "Position",
+    "tb_role": "Role",
     "tb_status": "Status",
     "user/page": "users/1 page",
     "edit_us": "Edit user",
